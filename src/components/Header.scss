@@ -1,0 +1,31 @@
+@import "../sass/config.scss";
+
+.header {
+  @include flex(row, space-between, center, nowrap);
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.787);
+  padding: 0 1rem;
+  gap: 1rem;
+
+  &__title {
+    color: $bg-tertiary;
+    font-size: 1.2rem;
+  }
+
+  &__search {
+    @include flex(row, flex-start, center, nowrap);
+    gap: 1rem;
+    width: 30rem;
+
+    input {
+      border: none;
+      outline: none;
+      color: inherit;
+      font-size: 1.3rem;
+      padding: 0.6rem;
+      width: 100%;
+      background-color: $bg-secondary;
+      border-radius: 20px;
+    }
+  }
+}
