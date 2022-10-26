@@ -6,3 +6,10 @@
   margin: 0;
   gap: 1rem;
 }
+
+.movie-container {
+  @include flex(column, flex-end, center, nowrap);
+  gap: 1rem;
+  max-width: 20rem;
+  max-height: 40rem;
+}

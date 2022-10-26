@@ -1,0 +1,28 @@
+@import "../sass/config.scss";
+
+.favorite {
+  @include flex(row, center, center, nowrap);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: $bg-secondary;
+  gap: 1rem;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  color: $font-primary;
+  opacity: 0.5;
+  transition: opacity 300ms;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.icon-false {
+  color: $font-primary;
+}
+
+.icon-true {
+  color: $bg-tertiary;
+}

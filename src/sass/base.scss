@@ -1,5 +1,9 @@
 @import "./config.scss";
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -7,4 +11,16 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: $bg-primary;
   color: $font-primary;
+}
+
+@media screen and (max-width: 1100px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  html {
+    font-size: 12px;
+  }
 }
