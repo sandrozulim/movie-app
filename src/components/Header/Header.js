@@ -13,10 +13,6 @@ function Header() {
     return !isActive ? "header__link" : "header__link header__link--active";
   };
 
-  const toggleExpandedNav = () => {
-    setNavIsExpanded((prevState) => !prevState);
-  };
-
   const searchInputChangeHandler = (e) => setInputQuery(e.target.value);
 
   const searchInputSubmitHandler = () => {
@@ -51,7 +47,7 @@ function Header() {
     return (
       <li key={link.title}>
         <NavLink
-          onClick={toggleExpandedNav}
+          onClick={() => setNavIsExpanded(false)}
           className={linkIsActive}
           to={link.to}
           end={link.end}
@@ -85,7 +81,7 @@ function Header() {
       </div>
 
       <PrimaryButton
-        onClick={toggleExpandedNav}
+        onClick={() => setNavIsExpanded(!navIsExpanded)}
         className="header__hamburger-btn"
       >
         <FiMenu className="header__hamburger-icon" />
