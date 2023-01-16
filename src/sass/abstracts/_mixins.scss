@@ -1,8 +1,3 @@
-$bg-primary: #242423;
-$bg-secondary: #333533;
-$bg-tertiary: #f5cb5c;
-$font-primary: #e8eddf;
-
 @mixin flex($dir, $justify, $align, $wrap) {
   display: flex;
   flex-direction: $dir;

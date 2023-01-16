@@ -1,0 +1,137 @@
+@use "../../sass/abstracts";
+
+.header {
+  @include abstracts.flex(row, space-between, center, nowrap);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  background-color: abstracts.$bg-primary;
+  padding: 0 3rem;
+  z-index: 10;
+  @media screen and (max-width: 1000px) {
+    padding: 0.8rem;
+  }
+
+  &__logo {
+    position: relative;
+    color: abstracts.$bg-tertiary;
+    font-size: 1rem;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: -1.5rem;
+    transform: translateY(-50%);
+  }
+
+  &__hamburger-btn {
+    display: none;
+    position: absolute;
+    right: 10px;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    transition: 250ms ease;
+    @media screen and (max-width: 1000px) {
+      display: flex;
+    }
+    &:hover,
+    &:active {
+      color: abstracts.$bg-tertiary;
+    }
+  }
+
+  &__hamburger-icon {
+    font-size: 1.5rem;
+  }
+
+  &__nav-list {
+    @include abstracts.flex(row, center, center, wrap);
+    font-size: 1.1rem;
+    margin-right: 1rem;
+    gap: 1.6rem;
+    padding: 0.8rem 0;
+    @media screen and (max-width: 1000px) {
+      display: none;
+    }
+  }
+
+  &__nav-list--expanded {
+    @include abstracts.flex(column, flex-start, center, nowrap);
+    gap: 2rem;
+    position: fixed;
+    padding: 2rem 0;
+    top: 6rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    background-color: abstracts.$bg-primary;
+    li {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__link {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.4rem;
+    transition: color 300ms;
+    &:hover {
+      color: abstracts.$bg-tertiary;
+    }
+    &--active {
+      color: abstracts.$bg-tertiary;
+    }
+
+    @media screen and (max-width: 1000px) {
+      background-color: abstracts.$bg-secondary-light;
+      display: block;
+      font-size: 1.2rem;
+      padding: 1rem;
+    }
+  }
+}
+
+.header-search {
+  position: relative;
+  flex-grow: 1;
+  max-width: 40%;
+
+  &__input {
+    border: none;
+    outline: none;
+    color: inherit;
+    padding: 0.4rem;
+    font-size: 1.3rem;
+    background-color: abstracts.$bg-secondary;
+    border-radius: 20px;
+    width: 100%;
+  }
+
+  &__btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    height: 100%;
+    transform: translateY(-50%);
+    border: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: abstracts.$bg-secondary-light;
+    transition: color 250ms;
+    &:hover,
+    &:active {
+      color: abstracts.$bg-tertiary;
+    }
+  }
+}

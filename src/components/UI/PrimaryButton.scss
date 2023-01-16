@@ -1,0 +1,15 @@
+@use "../../sass/abstracts";
+
+.btn {
+  @include abstracts.flex(row, center, center, nowrap);
+  gap: 0.3rem;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  background-color: abstracts.$bg-secondary-light;
+  color: abstracts.$font-primary;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid abstracts.$bg-primary;
+  box-shadow: 1px 2px 4px abstracts.$bg-primary;
+}

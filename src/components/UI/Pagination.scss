@@ -1,0 +1,30 @@
+@use "../../sass/abstracts";
+
+.pagination {
+  @include abstracts.flex(row, space-between, center, nowrap);
+  width: 30rem;
+  margin: 4rem auto;
+
+  &__arrow {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    color: abstracts.$bg-tertiary;
+    background-color: abstracts.$bg-secondary;
+    transition: all 250ms;
+    &:hover,
+    &:active {
+      transform: scale(1.1);
+      background-color: abstracts.$bg-secondary-light;
+    }
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.4;
+    }
+  }
+
+  &__current-page {
+    font-size: 1.6rem;
+  }
+}

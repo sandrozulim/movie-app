@@ -1,0 +1,21 @@
+@use "../../sass/abstracts";
+
+.spinner {
+  @include abstracts.flex(row, center, center, nowrap);
+  margin: 2rem;
+  &__icon {
+    color: abstracts.$bg-tertiary;
+    font-size: 4rem;
+    animation: rotate 2s infinite linear;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
