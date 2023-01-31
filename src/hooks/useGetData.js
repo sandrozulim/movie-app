@@ -10,7 +10,9 @@ function useGetData(url) {
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error("Something went wrong!");
+
       const data = await response.json();
+      if (data.errorMessage) throw new Error(data.errorMessage);
       setData(data.items || data.results || data);
     } catch (error) {
       setError(error.message);

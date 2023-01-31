@@ -24,7 +24,7 @@ export const FavoritesContextProvider = ({ children }) => {
   };
 
   return (
-    <FavoritesContextProvider
+    <FavoritesContext.Provider
       value={{
         favorites,
         addFavoriteHandler,
@@ -32,7 +32,7 @@ export const FavoritesContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </FavoritesContextProvider>
+    </FavoritesContext.Provider>
   );
 };
 

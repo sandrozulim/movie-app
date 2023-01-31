@@ -1,0 +1,7 @@
+@use "../../sass/abstracts";
+
+.no-data-msg {
+  @include abstracts.flex(column, center, center, nowrap);
+  gap: 2rem;
+  font-size: 1.6rem;
+}

@@ -1,45 +1,41 @@
 @use "../../sass/abstracts";
 
 .item-details {
-  @include abstracts.flex(row, space-between, flex-start, nowrap);
-  gap: 6rem;
-  margin: 0 10rem;
-  @media screen and (max-width: 900px) {
-    @include abstracts.flex(column, flex-start, center, nowrap);
-    gap: 0;
+  @include abstracts.flex(column, flex-start, center, nowrap);
+  gap: 4rem;
+  margin: 0 6rem;
+  @media screen and (max-width: 700px) {
     margin: 0 2rem;
   }
 
-  &__image {
-    margin: 0;
-    width: 40rem;
-    height: 40rem;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  &__about {
+  &__summary {
     @include abstracts.flex(column, flex-start, center, nowrap);
-    padding: 2rem;
-    flex-shrink: 1.6;
-    @media screen and (max-width: 900px) {
-      padding: 2rem;
-    }
+    padding: 1rem;
   }
 
   &__title {
-    font-size: 1.8rem;
-    margin-top: 0;
-    padding-bottom: 0.2rem;
-    border-bottom: 1px solid abstracts.$font-primary;
+    text-align: center;
+    font-size: 2.4rem;
   }
 
-  &__plot {
-    font-size: 1.2rem;
-    line-height: 1.8rem;
+  &__btn {
+    width: 100%;
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+    font-style: oblique;
+    opacity: 0.8;
+    transition: opacity 150ms;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__btn-save {
+    color: abstracts.$bg-primary;
+    background-color: abstracts.$bg-tertiary;
+  }
+
+  &__btn-remove {
+    background-color: rgb(187, 6, 6);
   }
 }

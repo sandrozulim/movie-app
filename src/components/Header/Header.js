@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaVideo, FaSearch } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
@@ -9,54 +9,18 @@ function Header() {
   const [navIsExpanded, setNavIsExpanded] = useState(false);
   const [inputQuery, setInputQuery] = useState("");
   const navigate = useNavigate();
-  const linkIsActive = ({ isActive }) => {
+
+  const linkClasses = ({ isActive }) => {
     return !isActive ? "header__link" : "header__link header__link--active";
   };
 
   const searchInputChangeHandler = (e) => setInputQuery(e.target.value);
 
   const searchInputSubmitHandler = () => {
-    navigate(`/search/${inputQuery}`);
+    if (inputQuery.trim() === "") return;
+    navigate(`search/${inputQuery}`);
     setInputQuery("");
   };
-
-  const links = [
-    {
-      to: "/",
-      title: "home",
-      end: true,
-    },
-
-    {
-      to: "/movies",
-      title: "movies",
-    },
-
-    {
-      to: "/tv-shows",
-      title: "tv shows",
-    },
-
-    {
-      to: "/favorites",
-      title: "favorites",
-    },
-  ];
-
-  const navigationContent = links.map((link) => {
-    return (
-      <li key={link.title}>
-        <NavLink
-          onClick={() => setNavIsExpanded(false)}
-          className={linkIsActive}
-          to={link.to}
-          end={link.end}
-        >
-          {link.title}
-        </NavLink>
-      </li>
-    );
-  });
 
   return (
     <header className="header">
@@ -93,7 +57,29 @@ function Header() {
             !navIsExpanded ? "header__nav-list" : "header__nav-list--expanded"
           }
         >
-          {navigationContent}
+          <li onClick={() => setNavIsExpanded(false)}>
+            <NavLink className={linkClasses} to="/" end>
+              home
+            </NavLink>
+          </li>
+
+          <li onClick={() => setNavIsExpanded(false)}>
+            <NavLink className={linkClasses} to="movies">
+              movies
+            </NavLink>
+          </li>
+
+          <li onClick={() => setNavIsExpanded(false)}>
+            <NavLink className={linkClasses} to="tv-shows">
+              tv-shows
+            </NavLink>
+          </li>
+
+          <li onClick={() => setNavIsExpanded(false)}>
+            <NavLink className={linkClasses} to="favorites">
+              favorites
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>

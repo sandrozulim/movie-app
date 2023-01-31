@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ItemsList from "../ItemsList/ItemsList";
 import Pagination from "../UI/Pagination";
 import Spinner from "../UI/Spinner";
+import ErrorModal from "../UI/ErrorModal";
 import useGetData from "../../hooks/useGetData";
 import { ITEMS_PER_PAGE } from "../../constants/api.constants";
 import "./Page.scss";
-import ErrorModal from "../UI/ErrorModal";
 
-function Page({ pageTitle, endpoint }) {
+function GenericPage({ pageTitle, endpoint }) {
   const { data, isLoading, error, setError } = useGetData(endpoint);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -37,4 +37,4 @@ function Page({ pageTitle, endpoint }) {
   );
 }
 
-export default Page;
+export default GenericPage;

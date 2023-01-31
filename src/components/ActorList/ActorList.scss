@@ -1,0 +1,26 @@
+@use "../../sass/abstracts";
+
+.actors-container {
+  @include abstracts.flex(column, flex-start, center, nowrap);
+
+  &__title {
+    font-size: 2rem;
+  }
+
+  &__list {
+    @include abstracts.flex(row, center, flex-start, wrap);
+    gap: 4rem;
+    padding: 0;
+  }
+  &__item {
+    @include abstracts.flex(column, flex-start, center, nowrap);
+    gap: 1rem;
+  }
+
+  &__img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}

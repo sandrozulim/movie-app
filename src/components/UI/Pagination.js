@@ -1,11 +1,17 @@
-import React from "react";
 import PrimaryButton from "./PrimaryButton";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { ITEMS_PER_PAGE } from "../../constants/api.constants";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./Pagination.scss";
+import { useEffect } from "react";
 
 function Pagination({ currentPage, setCurrentPage, numberOfItems }) {
-  const lastPage = Math.round(numberOfItems / ITEMS_PER_PAGE);
+  const lastPage = Math.ceil(numberOfItems / ITEMS_PER_PAGE);
+
+  const paginationArrowClasses = (condition) => {
+    return currentPage === condition
+      ? "pagination__arrow pagination__arrow--disabled"
+      : "pagination__arrow";
+  };
 
   const previousPageHandler = () => {
     if (currentPage === 1) return;
@@ -17,27 +23,27 @@ function Pagination({ currentPage, setCurrentPage, numberOfItems }) {
     setCurrentPage((prevState) => prevState + 1);
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+
   return (
     <>
       {numberOfItems > ITEMS_PER_PAGE && (
         <div className="pagination">
           <PrimaryButton
-            className={
-              currentPage === 1
-                ? "pagination__arrow pagination__arrow--disabled"
-                : "pagination__arrow"
-            }
+            className={paginationArrowClasses(1)}
             onClick={previousPageHandler}
           >
             {<FaArrowLeft />}
           </PrimaryButton>
 
+          <span className="pagination__state">
+            {currentPage} / {lastPage}
+          </span>
+
           <PrimaryButton
-            className={
-              currentPage === lastPage
-                ? "pagination__arrow pagination__arrow--disabled"
-                : "pagination__arrow"
-            }
+            className={paginationArrowClasses(lastPage)}
             onClick={nextPageHandler}
           >
             {<FaArrowRight />}

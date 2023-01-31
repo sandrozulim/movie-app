@@ -1,12 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import PrimaryButton from "./PrimaryButton";
+import { createPortal } from "react-dom";
 import { AiFillWarning } from "react-icons/ai";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import "./ErrorModal.scss";
 
 function ErrorModal({ children, onClose }) {
-  return ReactDOM.createPortal(
+  return createPortal(
     <>
       <div className="error-modal-overlay" onClick={onClose} />
 

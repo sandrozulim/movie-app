@@ -1,25 +1,26 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemsList from "../ItemsList/ItemsList";
+import ErrorModal from "../UI/ErrorModal";
 import Spinner from "../UI/Spinner";
 import Pagination from "../UI/Pagination";
-import ErrorModal from "../UI/ErrorModal";
 import useGetData from "../../hooks/useGetData";
 import { ITEMS_PER_PAGE } from "../../constants/api.constants";
 import { buildApiUrl } from "../../utilities/generic.utils";
+import "./SearchResults.scss";
 
 function SearchResults() {
   const [currentPage, setCurrentPage] = useState(1);
   const { inputQuery } = useParams();
-  const searchEndpoint = buildApiUrl("SearchTitle");
 
+  const searchEndpoint = buildApiUrl("Search");
   const { data, isLoading, error, setError } = useGetData(
     `${searchEndpoint}/${inputQuery}`
   );
 
   return (
     <>
-      <h2>Search results</h2>
+      <h2 className="search-title">Search results for "{inputQuery}"</h2>
 
       {isLoading && <Spinner />}
 
@@ -37,7 +38,6 @@ function SearchResults() {
         setCurrentPage={setCurrentPage}
         numberOfItems={data.length}
       />
-
       {error && <ErrorModal onClose={() => setError(null)}>{error}</ErrorModal>}
     </>
   );
