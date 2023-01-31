@@ -5,7 +5,7 @@ import Spinner from "../UI/Spinner";
 import ErrorModal from "../UI/ErrorModal";
 import useGetData from "../../hooks/useGetData";
 import { ITEMS_PER_PAGE } from "../../constants/api.constants";
-import "./Page.scss";
+import "./GenericPage.scss";
 
 function GenericPage({ pageTitle, endpoint }) {
   const { data, isLoading, error, setError } = useGetData(endpoint);
