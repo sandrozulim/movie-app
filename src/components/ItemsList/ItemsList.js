@@ -19,35 +19,35 @@ function ItemsList({ items }) {
 
   const content = items.map((item) => {
     return (
-      <li key={item.id} className="item-list__item">
-        <Link className="item-list__link" to={`/${item.id}`}>
+      <li key={item.id}>
+        <Link className="items-list__link" to={`/${item.id}`}>
           <img
-            className="item-list__poster"
+            className="items-list__poster"
             src={item.image}
             alt={item.title}
           />
-          <div className="item-list__info">
-            <h3 className="item-list__title">{item.title}</h3>
-            <PrimaryButton
-              onClick={(e) => {
-                e.preventDefault();
-                manageFavorites(item);
-              }}
-              className={
-                favorites.find((favorite) => favorite.id === item.id)
-                  ? "item-list__favorite-btn item-list__favorite-btn--active"
-                  : "item-list__favorite-btn "
-              }
-            >
-              <MdFavorite />
-            </PrimaryButton>
-          </div>
+
+          <h3 className="items-list__title">{item.title}</h3>
+
+          <PrimaryButton
+            onClick={(e) => {
+              e.preventDefault();
+              manageFavorites(item);
+            }}
+            className={
+              favorites.find((favorite) => favorite.id === item.id)
+                ? "items-list__favorite-btn items-list__favorite-btn--active"
+                : "items-list__favorite-btn "
+            }
+          >
+            <MdFavorite />
+          </PrimaryButton>
         </Link>
       </li>
     );
   });
 
-  return <ul className="item-list">{content}</ul>;
+  return <ul className="items-list">{content}</ul>;
 }
 
 export default ItemsList;

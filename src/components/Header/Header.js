@@ -16,7 +16,8 @@ function Header() {
 
   const searchInputChangeHandler = (e) => setInputQuery(e.target.value);
 
-  const searchInputSubmitHandler = () => {
+  const searchInputSubmitHandler = (e) => {
+    e.preventDefault();
     if (inputQuery.trim() === "") return;
     navigate(`search/${inputQuery}`);
     setInputQuery("");
@@ -29,20 +30,17 @@ function Header() {
         <FaVideo className="header__icon" />
       </div>
 
-      <div className="header-search">
+      <form onSubmit={searchInputSubmitHandler} className="header-search">
         <input
           value={inputQuery}
           onChange={searchInputChangeHandler}
           className="header-search__input"
           type="text"
         />
-        <PrimaryButton
-          onClick={searchInputSubmitHandler}
-          className="header-search__btn"
-        >
+        <PrimaryButton className="header-search__btn">
           <FaSearch />
         </PrimaryButton>
-      </div>
+      </form>
 
       <PrimaryButton
         onClick={() => setNavIsExpanded(!navIsExpanded)}

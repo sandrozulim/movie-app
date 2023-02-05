@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const FavoritesContext = React.createContext({
   favorites: [],
@@ -7,7 +7,17 @@ const FavoritesContext = React.createContext({
 });
 
 export const FavoritesContextProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState([]);
+  const initialState = () => {
+    const data = localStorage.getItem("favorites");
+    return data ? JSON.parse(data) : [];
+  };
+
+  const [favorites, setFavorites] = useState(initialState);
+
+  useEffect(() => {
+    const jsonFavorites = JSON.stringify(favorites);
+    localStorage.setItem("favorites", jsonFavorites);
+  }, [favorites]);
 
   const removeFavoriteHandler = (itemId) => {
     const updatedFavorites = favorites.filter(
