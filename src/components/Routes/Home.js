@@ -33,8 +33,8 @@ function Home() {
 export default Home;
 
 export const homeLoader = async () => {
-  const url = buildApiUrl("ComingSoonnnnn");
+  const url = buildApiUrl("ComingSoon");
   const response = await fetch(url);
-  if (!response.ok) throw json({ message: "Could not fetch data!" });
+  if (!response.ok) throw json({ message: "Could not fetch data!" }, {status: 500});
   return response;
 };

@@ -60,6 +60,6 @@ export default ItemDetails;
 export const itemDetailsLoader = async ({ params }) => {
   const url = buildApiUrl("Title");
   const response = await fetch(`${url}/${params.id}/images`);
-  if (!response.ok) throw json({ message: "Could not fetch details data!" });
+  if (!response.ok) throw json({ message: "Could not fetch details data!" }, {status: 500});
   return response;
 };

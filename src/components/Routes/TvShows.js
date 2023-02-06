@@ -35,6 +35,6 @@ export default TvShows;
 export const tvShowsLoader = async () => {
   const url = buildApiUrl("MostPopularTVs");
   const response = await fetch(url);
-  if (!response.ok) throw json({ message: "Could not fetch tv-shows data!" });
+  if (!response.ok) throw json({ message: "Could not fetch tv-shows data!" }, {status: 500});
   return response;
 };

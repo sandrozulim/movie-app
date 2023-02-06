@@ -1,5 +1,4 @@
 import React from "react";
-import ErrorModal from "../UI/ErrorModal";
 import { useRouteError } from "react-router-dom";
 
 function ErrorPage() {

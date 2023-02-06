@@ -35,6 +35,6 @@ export default Movies;
 export const moviesLoader = async () => {
   const url = buildApiUrl("MostPopularMovies");
   const response = await fetch(url);
-  if (!response.ok) throw json({ message: "Could not fetch movies data!" });
+  if (!response.ok) throw json({ message: "Could not fetch movies data!" }, {status: 500});
   return response;
 };
