@@ -1,11 +1,14 @@
 import React from "react";
-import Favorites from "./components/Routes/Favorites";
 import RootLayout from "./components/Routes/RootLayout";
-import GenericPage from "./components/Routes/GenericPage";
-import ItemDetails from "./components/ItemDetails/ItemDetails";
-import SearchResults from "./components/Routes/SearchResults";
-import { buildApiUrl } from "./utilities/generic.utils";
-import "./App.scss";
+import ErrorPage from "./components/Routes/ErrorPage";
+import Home, { homeLoader } from "./components/Routes/Home";
+import Movies, { moviesLoader } from "./components/Routes/Movies";
+import TvShows, { tvShowsLoader } from "./components/Routes/TvShows";
+import SearchResults, { searchLoader } from "./components/Routes/SearchResults";
+import Favorites from "./components/Routes/Favorites";
+import ItemDetails, {
+  itemDetailsLoader,
+} from "./components/ItemDetails/ItemDetails";
 
 import {
   createHashRouter,
@@ -14,39 +17,21 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import "./App.scss";
+
 const router = createHashRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
+    <Route path="/" element={<RootLayout />} errorElement={<ErrorPage />}>
+      <Route index element={<Home />} loader={homeLoader} />
+      <Route path="movies" element={<Movies />} loader={moviesLoader} />
+      <Route path="tv-shows" element={<TvShows />} loader={tvShowsLoader} />
+      <Route path=":id" element={<ItemDetails />} loader={itemDetailsLoader} />
       <Route
-        index
-        element={
-          <GenericPage
-            pageTitle="Coming soon"
-            endpoint={buildApiUrl("ComingSoon")}
-          />
-        }
-      />
-      <Route
-        path="movies"
-        element={
-          <GenericPage
-            pageTitle="Popular movies"
-            endpoint={buildApiUrl("MostPopularMovies")}
-          />
-        }
-      />
-      <Route
-        path="tv-shows"
-        element={
-          <GenericPage
-            pageTitle="Popular tv-shows"
-            endpoint={buildApiUrl("MostPopularTVs")}
-          />
-        }
+        path="search/:inputQuery"
+        element={<SearchResults />}
+        loader={searchLoader}
       />
       <Route path="favorites" element={<Favorites />} />
-      <Route path=":id" element={<ItemDetails />} />
-      <Route path="search/:inputQuery" element={<SearchResults />} />
     </Route>
   )
 );
