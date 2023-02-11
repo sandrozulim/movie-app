@@ -1,0 +1,14 @@
+@use "../../sass/abstracts";
+
+.error-msg {
+  text-align: center;
+  margin-top: 20rem;
+
+  &__title {
+    font-size: 4rem;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+  }
+}

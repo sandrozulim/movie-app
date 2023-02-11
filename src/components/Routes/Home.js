@@ -35,6 +35,7 @@ export default Home;
 export const homeLoader = async () => {
   const url = buildApiUrl("ComingSoon");
   const response = await fetch(url);
-  if (!response.ok) throw json({ message: "Could not fetch data!" }, {status: 500});
+  if (!response.ok)
+    throw json({ message: "Could not fetch data!" }, { status: 500 });
   return response;
 };

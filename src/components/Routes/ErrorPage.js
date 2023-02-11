@@ -1,5 +1,7 @@
 import React from "react";
 import { useRouteError } from "react-router-dom";
+import Header from "../Header/Header";
+import "./ErrorPage.scss";
 
 function ErrorPage() {
   const error = useRouteError();
@@ -15,7 +17,15 @@ function ErrorPage() {
     message = error.data.message;
   }
 
-  return <p>{message}</p>;
+  return (
+    <>
+      <Header />
+      <div className="error-msg">
+        <h2 className="error-msg__title">Oops!</h2>
+        <p className="error-msg__text">{message}</p>
+      </div>
+    </>
+  );
 }
 
 export default ErrorPage;

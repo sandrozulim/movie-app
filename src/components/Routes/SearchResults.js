@@ -36,6 +36,7 @@ export default SearchResults;
 export const searchLoader = async ({ params }) => {
   const url = buildApiUrl("Search");
   const response = await fetch(`${url}/${params.inputQuery}`);
-  if (!response.ok) throw json({ message: "Could not fetch data!" }, {status: 500});
+  if (!response.ok)
+    throw json({ message: "Could not fetch data!" }, { status: 500 });
   return response;
 };
